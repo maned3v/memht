@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<template>
+	<name>MemHT ACP</name>
+	<version>1.0</version>
+	<description>Default ACP template</description>
+	
+	<author>
+		<name>Miltenovikj Manojlo</name>
+		<email>dev@miltenovik.com</email>
+		<url>http://www.memht.com</url>
+		<copyright>Copyright (C) 2008-2012 Miltenovikj Manojlo</copyright>
+		<license>GNU/GPLv2 http://www.gnu.org/licenses/</license>
+	</author>
+</template>

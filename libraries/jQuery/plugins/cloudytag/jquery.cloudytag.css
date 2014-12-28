@@ -1,0 +1,10 @@
+.cloudyTag {
+	margin:0;
+	clear:both;
+}
+.cloudyTag div {
+	margin: 4px 4px 0 0;
+	padding:2px 6px;
+	float:left;
+	cursor:pointer;
+}

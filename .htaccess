@@ -1,0 +1,46 @@
+# =========================================================================
+# Files protection
+# =========================================================================
+<Files .htaccess>
+	order allow,deny
+	deny from all
+</Files>
+
+# =========================================================================
+# Error handler
+# =========================================================================
+# Change the site path if needed
+# Example:
+# ErrorDocument 404 /folder/index.php?cont=error
+# -------------------------------------------------------------------------
+ErrorDocument 500 /index.php?cont=error&cod=500
+ErrorDocument 404 /index.php?cont=error&cod=404
+ErrorDocument 403 /index.php?cont=error&cod=403
+ErrorDocument 401 /index.php?cont=error&cod=401
+ErrorDocument 400 /index.php?cont=error&cod=400
+
+# =========================================================================
+# Url rewrite
+# =========================================================================
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	
+	# -------------------------------------------
+	# Change the site path if needed
+	# Example: RewriteBase  /folder/
+	# -------------------------------------------
+	RewriteBase /
+	
+	# Block queries containing http(s):// or ftp://
+	RewriteCond %{QUERY_STRING} (.*)(http|https|ftp):\/\/(.*)
+	RewriteRule ^(.+)$ - [F]
+	
+	# Block libwww-perl user agent
+	RewriteCond %{HTTP_USER_AGENT} ^libwww-perl
+	RewriteRule ^(.+)$ - [F]
+	
+	# Mod-rewrite	
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php?cont=$1 [L,QSA]
+</IfModule>

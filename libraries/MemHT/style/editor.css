@@ -1,0 +1,20 @@
+.codeStyle {
+	border:3px solid #FDD;
+	margin:5px;
+	padding:5px;
+	overflow:auto;
+	display:block;
+}
+.quoteStyle {
+	border:3px solid #EEE;
+	margin:5px;
+	padding:5px;
+	overflow:auto;
+	display:block;
+}
+.mce-pagebreak {
+    border:none;
+    border-bottom:2px dashed #F00;
+    display:block;
+    margin:10px 0;
+}

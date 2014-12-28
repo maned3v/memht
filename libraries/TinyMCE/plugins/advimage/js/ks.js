@@ -1,0 +1,1 @@
+document.getElementById('advimage_ks').innerHTML = 'HER ER DET NYE INNHOLDET';

@@ -1,0 +1,95 @@
+.jqueryslidemenu{
+	width: 100%;
+	height:35px;
+}
+.jqueryslidemenu ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+/*Top level list items*/
+.jqueryslidemenu ul li{
+	position: relative;
+	display: inline;
+	float: left;
+	z-index:9999;
+}
+
+/*Top level menu link items style*/
+.jqueryslidemenu ul li a{
+	height:17px; /*35 -9 -9 padding*/
+	display: block;
+	/*background: #414141;*/ /*background of tabs (default state)*/
+	color: white;
+	padding: 9px 10px;
+	border-right: 1px solid #74A4CB;
+	color: #2d2b2b;
+	text-decoration: none;
+	margin-bottom:1px;
+}
+
+* html .jqueryslidemenu ul li a{ /*IE6 hack to get sub menu links to behave correctly*/
+	display: inline-block;
+}
+
+.jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited{
+	color: #FFF;
+}
+
+.jqueryslidemenu ul li.top a:hover{
+	background:url(images/tpl_bar_h.png) repeat-x; /*tab link background during hover state*/
+	color: #FFF;
+}
+.jqueryslidemenu ul li.sub a:hover{
+	background:#8DB5D5; /*tab link background during hover state*/
+	color: #FFF;
+}
+	
+/* SUBMENU */
+.jqueryslidemenu ul li ul{
+	position: absolute;
+	left: 0;
+	display: block;
+	visibility: hidden;
+	background-color:#7BA9CE;
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.jqueryslidemenu ul li ul li{
+	display: list-item;
+	float: none;
+}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.jqueryslidemenu ul li ul li ul{
+	top: 0;
+}
+
+/* Sub level menu links style */
+.jqueryslidemenu ul li ul li a{
+	font: normal 13px Verdana;
+	width: 200px; /*width of sub menus*/
+	padding: 5px 10px;
+	margin: 0;
+	border-top-width: 0;
+	border-bottom: 1px solid #74A4CB;
+}
+
+.jqueryslidemenuz ul li ul li a:hover{ /*sub menus hover style*/
+	background: #eff9ff;
+	color: black;
+}
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+
+.downarrowclass{
+	position: absolute;
+	top: 12px;
+	right: 7px;
+}
+
+.rightarrowclass{
+	position: absolute;
+	top: 6px;
+	right: 5px;
+}

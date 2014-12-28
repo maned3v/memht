@@ -1,0 +1,38 @@
+html, body, table, td, tr{font:normal 10px verdana}
+#src_list, #over_list, #out_list {width:600px;}
+.mceActionPanel {margin-top:7px;}
+.alignPreview {border:1px solid #000; width:140px; height:140px; overflow:hidden; padding:5px;}
+.checkbox {border:0;}
+.panel_wrapper div.current {height:400px;}
+.column1{width:140px;}
+.thumb_view{width:65px;height:65px;margin:0 7px 7px 0;padding:3px;border:1px solid #ddd;float:left;}
+.thumb_view:hover{border:1px solid #ddd;background:#ddd}
+input.textfield_std{width:260px;}
+#prev {margin:0; border:1px solid #000; width:428px; height:150px; overflow:auto;display:none}
+#align, #classlist {width:150px;}
+#width, #height {vertical-align:middle; width:50px; text-align:center;}
+#vspace, #hspace, #border {vertical-align:middle; width:30px; text-align:center;}
+#class_list {width:180px;}
+
+#constrain, #onmousemovecheck {width:auto;}
+#id, #dir, #lang, #usemap, #longdesc {width:200px;}
+
+
+
+#library_cont, #folder_list{position:relative;height:288px;overflow: auto;}
+
+ul#folder_list{margin:0;padding:0;}
+ul#folder_list li{list-style-type:none}
+ul#folder_list li a{display:block;padding:3px 6px 3px 20px;background:url(../img/folder.png) no-repeat left center;margin:0 0 1px 0}
+
+
+.alert_ok{background:#E6EFC2 url(../img/ok.png) no-repeat 5px center;border:1px solid #C6D880;font-weight:bold;padding:8px 12px 8px 25px;margin:5px 0 10px 0;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px;  border-radius: 4px;}
+.alert_error{background:#FBE3E4 url(../img/delete.png) no-repeat 5px center;border:1px solid #FBC2C4;font-weight:bold;padding:8px 12px 8px 25px;margin:5px 0 10px 0;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px;  border-radius: 4px;}
+.alert_info{background:#f9f9f9 url(../img/info.png) no-repeat 5px center;border:1px solid #eee;font-weight:bold;padding:8px 12px 8px 25px;margin:5px 0 10px 0;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px;  border-radius: 4px;}
+	
+.info{background:#f9f9f9 url(../img/info.png) no-repeat 5px 7px;border:1px solid #eee;padding:8px 12px 8px 25px;margin:0px 0 5px 0;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px;  border-radius: 4px;}
+
