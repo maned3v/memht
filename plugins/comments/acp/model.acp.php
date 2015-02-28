@@ -106,13 +106,86 @@ class commentsModel {
 									$author_name	= Io::Output($row['author_name']);
 									$author_email	= Io::Output($row['author_email']);
 									$author			= Io::Output($row['author'],"int");
+									
+									
+									if($controller == "articles") {
+										
+										//Controller-name match
+										$plugmatch = Ram::Get("plugmatch");
+										$plugname = isset($plugmatch['articles']) ? $plugmatch['articles'] : _PLUGIN ;
+																				
+										$row = $Db->GetRow("SELECT a.*,s.name AS sname,c.name AS cname
+                                                            FROM #__articles AS a FORCE INDEX(created) JOIN #__articles_categories AS c JOIN #__articles_sections AS s
+                                                            ON a.category=c.id AND s.id=c.section WHERE a.id=".intval($item)."");
+										
+										$sname	   = Io::Output($row['sname']);
+										$cname	   = Io::Output($row['cname']);
+										$name	   = Io::Output($row['name']);
+										$created_o = Io::Output($row['created']);
+										//Split creation date
+										$cdate     = explode(" ",$created_o);
+										$cdate     = explode("-",$cdate[0]);
+										$cmonth    = intval($cdate[1]);
+										$cyear     = $cdate[0];
+											
+										$url = "index.php?"._NODE."=$plugname&amp;sec=$sname&amp;cat=$cname&amp;year=$cyear&amp;month=$cmonth&amp;title=$name#comment$id";
+									
+									} elseif($controller == "blog") {
+										
+										//Controller-name match
+										$plugmatch = Ram::Get("plugmatch");
+										$plugname = isset($plugmatch['blog']) ? $plugmatch['blog'] : _PLUGIN ;								
+										
+										$row = $Db->GetRow("SELECT p.*,c.name AS cname FROM #__blog_posts AS p FORCE INDEX(created) 
+											                JOIN #__blog_categories AS c ON p.category=c.id WHERE p.id=".intval($item)."");
+										
+										$cname	  = Io::Output($row['cname']);
+										$name	  = Io::Output($row['name']);
+										
+										$url = "index.php?"._NODE."=$plugname&amp;cat=$cname&amp;title=$name#comment$id";
+									
+									} elseif($controller == "downloads") {
+										
+										//Controller-name match
+										$plugmatch = Ram::Get("plugmatch");
+										$plugname = isset($plugmatch['downloads']) ? $plugmatch['downloads'] : _PLUGIN ;								
+										
+										$row = $Db->GetRow("SELECT d.*,s.name AS sname,c.name AS cname FROM #__downloads AS d FORCE INDEX(cs) 
+										                    JOIN #__downloads_sections AS s JOIN #__downloads_categories AS c ON d.category=c.id 
+										                    AND c.section=s.id WHERE d.id=".intval($item)."");
+										
+										$name   = Io::Output($row['name']);
+										$sname	= Io::Output($row['sname']);
+										$cname	= Io::Output($row['cname']);
+										
+										$url = "index.php?"._NODE."=$plugname&amp;sec=$sname&amp;cat=$cname&amp;title=$name#comment$id";									
+
+									} elseif($controller == "gallery") {
+										
+										//Controller-name match
+										$plugmatch = Ram::Get("plugmatch");
+										$plugname = isset($plugmatch['gallery']) ? $plugmatch['gallery'] : _PLUGIN ;								
+										
+										$row = $Db->GetRow("SELECT g.*,s.name AS sname,c.name AS cname FROM #__gallery AS g 
+										                    JOIN #__gallery_sections AS s JOIN #__gallery_categories AS c ON g.category=c.id 
+										                    AND c.section=s.id WHERE g.id=".intval($item)."");
+										
+										$name   = Io::Output($row['name']);
+										$sname	= Io::Output($row['sname']);
+										$cname	= Io::Output($row['cname']);
+										
+										$url = "index.php?"._NODE."=$plugname&amp;sec=$sname&amp;cat=$cname&amp;title=$name#comment$id";									
+
+									} else {
+										$url = "admin.php?"._NODE."="._PLUGIN."";
+									}									
 										
 									$author = ($author>0) ? $User->Name($author) : "<strong>$author_name</strong><br />$author_email" ;
 										
 									echo "<tr id='Comment{$id}' onmouseover='javascript:showmenu($id);' onmouseout='javascript:showmenu($id);'>\n";
 										echo "<td><img src='admin/templates/memht/icons/cloud.png' alt='Comment{$id}' /><br />&nbsp;</td>\n";
 										echo "<td>$author</td>\n";
-										echo "<td>$text</td>\n";
+										echo "<td><a href='$url' target='_blank'>$text</a></td>\n";
 										echo "<td>$ip\n";
 											echo "<div id='ip_$id' style='display:none; margin-top:2px;'><a href='admin.php?cont=security&amp;op=find&amp;ip=$ip' title='"._t("FIND_X",_t("IP"))."'>"._t("FIND_X",_t("IP"))."</a></div>\n";
 										echo "</td>\n";
