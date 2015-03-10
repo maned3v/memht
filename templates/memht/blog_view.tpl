@@ -42,7 +42,7 @@
 	</div>
 {/if}
 
-<div class="tpl_social_title">{t 0=SHARE}</div>
+<div class="tpl_social_title">{t 1=SHARE}</div>
 <div class="tpl_social_box tpl_rounded">
 	<span style='float:left;'><g:plusone size="medium"></g:plusone></span>
 	<span style='float:left;'><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></span>
