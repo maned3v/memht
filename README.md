@@ -9,10 +9,10 @@ You can create and manage your website with MemHT in few and easy steps, it's cu
 #### GitHub repository links
 |Repository|Link|
 |----------|----|
-|**MemHT Core**|https://github.com/memht/memht|
-|MemHT Extensions|https://github.com/memht/memht-extensions|
-|MemHT Plugins|https://github.com/memht/memht-plugins|
-|MemHT Templates|https://github.com/memht/memht-templates|
+|**MemHT Core**|https://github.com/maned3v/memht|
+|MemHT Extensions|https://github.com/maned3v/memht-extensions|
+|MemHT Plugins|https://github.com/maned3v/memht-plugins|
+|MemHT Templates|https://github.com/maned3v/memht-templates|
 
 #### MemHT links
 <table>
@@ -31,7 +31,7 @@ You can create and manage your website with MemHT in few and easy steps, it's cu
 </table>
 
 #### Release changes
-See [CHANGES.md](https://github.com/memht/memht/blob/master/CHANGES.md)
+See [CHANGES.md](https://github.com/maned3v/memht/blob/master/CHANGES.md)
 
 #### How to install or update MemHT
-See [install.txt](https://github.com/memht/memht/blob/master/install.txt) and [update.txt](https://github.com/memht/memht/blob/master/update.txt)
+See [install.txt](https://github.com/maned3v/memht/blob/master/install.txt) and [update.txt](https://github.com/maned3v/memht/blob/master/update.txt)
