@@ -22,13 +22,7 @@ You can create and manage your website with MemHT in few and easy steps, it's cu
     <td>Documents</td><td>http://docs.memht.com</td>
   </tr>
   <tr>
-    <td>Forums</td><td>http://forums.memht.com</td>
-  </tr>
-  <tr>
     <td>Downloads</td><td>http://downloads.memht.com</td>
-  </tr>
-  <tr>
-    <td>Demo</td><td>http://demo.memht.com</td>
   </tr>
 </table>
 
