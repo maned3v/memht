@@ -1,4 +1,4 @@
-{if isset($plugin_pagination) && sizeof($plugin_pagination)}
+{if isset($plugin_pagination)}
 	<div class="tpl_pagination" style="margin-top:10px;">
     	{* LABEL *}
         {if isset($plugin_pagination.label)}<span class="tpl_rounded">{$plugin_pagination.label}</span>{/if}

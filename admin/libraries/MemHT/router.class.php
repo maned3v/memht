@@ -52,7 +52,7 @@ class BaseRouter {
 
 		$querystring = $Visitor['query_string'];
 		if ($querystring==false && !isset($_SERVER['QUERY_STRING']) && !isset($_SERVER['argv']))
-			Error::Trigger("USERERROR",_t("REQUEST_URL_CANNOT_BE_PROCESSED"),$Visitor['request_uri']);
+			MemErr::Trigger("USERERROR",_t("REQUEST_URL_CANNOT_BE_PROCESSED"),$Visitor['request_uri']);
 
 		$this->controller = Io::GetVar("GET","cont","[^a-zA-Z0-9\-]",true,"dashboard");
 		$this->action = Io::GetVar("GET","op","[^a-zA-Z0-9\-]",true,"index");

@@ -129,10 +129,10 @@ if (!$User->IsAdmin()) die();
 					if (!$image = $Up->Upload()) $errors[] = implode(",",$Up->GetErrors());
 					
 					if (!sizeof($errors)) {
-						Error::Trigger("INFO",_t("UPLOADED"),"assets/images/$image");
+						MemErr::Trigger("INFO",_t("UPLOADED"),"assets/images/$image");
 						echo "<input type='hidden' name='filename' id='filename' value='assets/images/$image' />\n";
 					} else {
-						Error::Trigger("USERERROR",implode("<br />",$errors));
+						MemErr::Trigger("USERERROR",implode("<br />",$errors));
 						echo "<div style='margin-top:10px;'><a href='dialog_serv.php?type=image'>"._t("TRY_AGAIN")."</a></div>\n";
 					}
 					break;
@@ -208,19 +208,19 @@ if (!$User->IsAdmin()) die();
 								
 								$url = RewriteUrl("index.php?"._NODE."=$plugname&amp;op=get&amp;id=$id");
 								
-								Error::Trigger("INFO",_t("UPLOADED"),"$url");
+								MemErr::Trigger("INFO",_t("UPLOADED"),"$url");
 								echo "<input type='hidden' name='filename' id='filename' value='$url' />\n";
 							} else {
-								Error::Trigger("USERERROR",implode("<br />",$errors));
+								MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								echo "<div style='margin-top:10px;'><a href='dialog_serv.php?type=file'>"._t("TRY_AGAIN")."</a></div>\n";
 							}
 							break;
 					}
 				} else {
-					Error::Trigger("USERERROR",_t("CREATE_FOLDER"),"assets/files/<strong>".$config_sys['files_path']."</strong>");
+					MemErr::Trigger("USERERROR",_t("CREATE_FOLDER"),"assets/files/<strong>".$config_sys['files_path']."</strong>");
 				}
 			} else {
-				Error::Trigger("USERERROR",_t("X_NOT_FOUND_OR_INACTIVE",_t("PLUGIN")),"Files manager");
+				MemErr::Trigger("USERERROR",_t("X_NOT_FOUND_OR_INACTIVE",_t("PLUGIN")),"Files manager");
 			}
 			break;
 	}

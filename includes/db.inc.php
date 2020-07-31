@@ -34,8 +34,11 @@ defined("_LOAD") or die("Access denied");
 //Select the database layer
 switch ($config_db['type']) {
 	default:
+	case "mysqli":
+		require_once(_PATH_LIBRARIES._DS."MemHT"._DS."db"._DS."mysqli.class.php");
+	break;
 	case "mysql":
-		require_once(_PATH_LIBRARIES._DS."MemHT"._DS."db"._DS."mysql.class.php");
+		require_once(_PATH_LIBRARIES._DS."MemHT"._DS."db"._DS."mysqli.class.php");
 	break;
 }
 

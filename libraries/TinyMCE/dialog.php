@@ -209,13 +209,13 @@ $type = Io::GetVar("GET","type","[^a-z]");
 
                                                     ?></table><?php
                                                 } else {
-                                                    Error::Trigger("INFO",_t("LIST_EMPTY"));
+                                                    MemErr::Trigger("INFO",_t("LIST_EMPTY"));
                                                 }
                                             } else {
-                                                Error::Trigger("USERERROR",_t("CREATE_FOLDER"),"assets/files/<strong>".$config_sys['files_path']."</strong>");
+                                                MemErr::Trigger("USERERROR",_t("CREATE_FOLDER"),"assets/files/<strong>".$config_sys['files_path']."</strong>");
                                             }
                                         } else {
-                                            Error::Trigger("USERERROR",_t("X_NOT_FOUND_OR_INACTIVE",_t("PLUGIN")),"Files manager");
+                                            MemErr::Trigger("USERERROR",_t("X_NOT_FOUND_OR_INACTIVE",_t("PLUGIN")),"Files manager");
                                         }
                                         ?>
                                     </td>

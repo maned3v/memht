@@ -506,7 +506,7 @@ class articlesModel {
 
 								foreach ($sticker as $key => $value) {
 									$form->FieldsetStart("$".$key);
-									if (!empty($value)) Error::Trigger("MINFO",$value);
+									if (!empty($value)) MemErr::Trigger("MINFO",$value);
 										//Value
 										$form->AddElement(array("element"	=>"textarea",
 																"label"		=>_t("CONTENT"),
@@ -717,7 +717,7 @@ class articlesModel {
 									<div class="ui-widget-header"><?php echo _t("CREATE_NEW_X",MB::strtolower(_t("ARTICLE"))); ?></div>
 									<div class="body">
 									<?php
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									?>
 									</div>
 								</div>
@@ -735,7 +735,7 @@ class articlesModel {
 								<div class="ui-widget-header"><?php echo _t("CREATE_NEW_X",MB::strtolower(_t("ARTICLE"))); ?></div>
 								<div class="body">
 								<?php
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								?>
 								</div>
 							</div>
@@ -919,7 +919,7 @@ class articlesModel {
 
 								foreach ($sticker as $key => $value) {
 									$form->FieldsetStart("$".$key);
-									if (!empty($value)) Error::Trigger("MINFO",$value);
+									if (!empty($value)) MemErr::Trigger("MINFO",$value);
 										//Value
 										$form->AddElement(array("element"	=>"textarea",
 																"label"		=>_t("CONTENT"),
@@ -1143,7 +1143,7 @@ class articlesModel {
 									<div class="ui-widget-header"><?php echo _t("EDIT"); ?></div>
 									<div class="body">
 									<?php
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									?>
 									</div>
 								</div>
@@ -1161,7 +1161,7 @@ class articlesModel {
 								<div class="ui-widget-header"><?php echo _t("EDIT"); ?></div>
 								<div class="body">
 								<?php
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								?>
 								</div>
 							</div>
@@ -1180,7 +1180,7 @@ class articlesModel {
 						<div class="ui-widget-header"><?php echo _t("EDIT"); ?></div>
 						<div class="body">
 						<?php
-						Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("ARTICLE")));
+						MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("ARTICLE")));
 						?>
 						</div>
 					</div>
@@ -1441,7 +1441,7 @@ class articlesModel {
 											echo Diff::Process($otext,$ntext);
 										echo "</div>\n";
 									} else {
-										Error::Trigger("USERERROR",_t("SELECT_2_DIST_REV_COMP"));
+										MemErr::Trigger("USERERROR",_t("SELECT_2_DIST_REV_COMP"));
 									}
 								} else if ($rev!==false) {
 									?>
@@ -1457,7 +1457,7 @@ class articlesModel {
 									echo "</div>\n";
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("ARTICLE")));
+								MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("ARTICLE")));
 							}
 							?>
                         </div>
@@ -1500,7 +1500,7 @@ class articlesModel {
 			//Start buffering content
 			Utils::StartBuffering();
 			
-			Error::Trigger("USERERROR",_t("WRONG_DATA_X","APA_e001"));
+			MemErr::Trigger("USERERROR",_t("WRONG_DATA_X","APA_e001"));
 			
 			//Assign captured content to the template engine and clean buffer
 			Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,"url"=>"admin.php?cont="._PLUGIN,"content"=>Utils::GetBufferContent("clean")));
@@ -1527,7 +1527,7 @@ class articlesModel {
 			//Start buffering content
 			Utils::StartBuffering();
 			
-			Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("REVISION")));
+			MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("REVISION")));
 			
 			//Assign captured content to the template engine and clean buffer
 			Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,"url"=>"admin.php?cont="._PLUGIN,"content"=>Utils::GetBufferContent("clean")));
@@ -2066,10 +2066,10 @@ class articlesModel {
 												
 									Utils::Redirect("admin.php?cont="._PLUGIN."&op=categories");
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
 							
 							?>
@@ -2254,14 +2254,14 @@ class articlesModel {
 										
 										Utils::Redirect("admin.php?cont="._PLUGIN."&op=categories");
 									} else {
-										Error::Trigger("USERERROR",implode("<br />",$errors));
+										MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									}
 								} else {
-									Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+									MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								}
 							}
 						} else {
-							Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("CATEGORY")));
+							MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("CATEGORY")));
 						}
 						?>						
 											
@@ -2560,10 +2560,10 @@ class articlesModel {
 
 									Utils::Redirect("admin.php?cont="._PLUGIN."&op=sections");
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
 
 							?>
@@ -2696,14 +2696,14 @@ class articlesModel {
 
 										Utils::Redirect("admin.php?cont="._PLUGIN."&op=sections");
 									} else {
-										Error::Trigger("USERERROR",implode("<br />",$errors));
+										MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									}
 								} else {
-									Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+									MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								}
 							}
 						} else {
-							Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("SECTION")));
+							MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("SECTION")));
 						}
 						?>
 

@@ -341,13 +341,16 @@ function finish() {
  * */
 
 if (version_compare(PHP_VERSION, '6.0.0') >= 0) {
-	function get_magic_quotes_gpc(){
-		return false;
+	if (!function_exists("get_magic_quotes_gpc")) {
+		function get_magic_quotes_gpc(){
+			return false;
+		}
 	}
 }
 
 function in($string) {
-	if (get_magic_quotes_gpc()) $string = stripslashes($string);
+	//Deprecated
+	//if (get_magic_quotes_gpc()) $string = stripslashes($string);
 	return htmlspecialchars($string,ENT_QUOTES,'UTF-8');
 }
 

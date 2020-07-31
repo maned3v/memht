@@ -31,7 +31,7 @@
 //Deny direct access
 defined("_LOAD") or die("Access denied");
 
-class Error {
+class MemErr {
 	static function Trigger($level,$message,$error="") {
 		global $config_sys,$Db,$User;
 
@@ -73,11 +73,13 @@ class Error {
 	}
 
 	static function MemErrorHandler($errno,$errstr,$errfile,$errline) {
-		global $User,$Db;
+		global $User,$Db,$Visitor;
 
 		if (error_reporting()==0) return; //Error supressed with @
-		if ($errno==2048) return; //Ignore E_STRICT
+		if ($errno==2048 || $errno==8192) return; //Ignore E_STRICT
 		$log_sys = @Utils::GetComOption("error_handler","log_sys",1);
+
+		if (!isset($Visitor['request_uri'])) $Visitor['request_uri'] = "Not set";
 		
 		$errnos = array(
 			1		=> array('E_ERROR','Error'),
@@ -100,9 +102,9 @@ class Error {
 		$errtrace = debug_backtrace();
 		if (defined("_ERRHDL")) {
 			//Full error display
-			if (MB::stripos($errstr,"_fetch_assoc") || MB::stripos($errstr,"_num_rows") || MB::stripos($errstr,"ot a valid MySQL")) {
+			if (MB::stripos($errstr,"_fetch_assoc") || MB::stripos($errstr,"_num_rows") || MB::stripos($errstr,"ot a valid MySQL result")) {
 				//MySQL
-				if ($User->IsAdmin() && error_reporting()<>0) {
+				if ($User->IsAdmin()) {
 					echo "<div class='error_sys'>\n";
 						echo "<div><strong>MySQL</strong> (".$Db->GetErrno().")</div>\n";
 						echo "<div class='e_txt'>".$Db->GetError()."</div>\n";
@@ -111,10 +113,10 @@ class Error {
 						echo "<div><strong>Line:</strong> ".$errtrace[2]['line']."</div>\n";
 					echo "</div>\n";
 				}
-				if ($log_sys) self::StoreLog("error_mysql","Message: ".$Db->GetError()."<br />Query: ".$errtrace[2]['args'][0]."<br />File: ".$errtrace[2]['file']."<br />Line: ".$errtrace[2]['line']);
+				if ($log_sys) self::StoreLog("error_mysql","Message: ".$Db->GetError()."<br />Query: ".$errtrace[2]['args'][0]."<br />File: ".$errtrace[2]['file']."<br />Line: ".$errtrace[2]['line']."<br />URI:".$Visitor['request_uri']);
 			} else if (in_array($errno,array(256,512,1024))) {
 				//User
-				if ($User->IsAdmin() && error_reporting()<>0) {
+				if ($User->IsAdmin()) {
 					echo "<div class='error_sys'>\n";
 						echo "<div><strong>".$errnos[$errno][1]."</strong> ($errno)</div>\n";
 						echo "<div class='e_txt'>$errstr</div>\n";
@@ -122,9 +124,9 @@ class Error {
 						echo "<div><strong>Line:</strong> ".$errtrace[1]['line']."</div>\n";
 					echo "</div>\n";
 				}
-				if ($log_sys) self::StoreLog("error_user","Message: $errstr<br />File: ".$errtrace[1]['file']."<br />Line: ".$errtrace[1]['line']);
+				if ($log_sys) self::StoreLog("error_user","Message: $errstr<br />File: ".$errtrace[1]['file']."<br />Line: ".$errtrace[1]['line']."<br />URI:".$Visitor['request_uri']);
 			} else if (MB::stripos($errstr,"ysql_real_escape_string")) {
-				if ($User->IsAdmin() && error_reporting()<>0) {
+				if ($User->IsAdmin()) {
 					echo "<div class='error_sys'>\n";
 						echo "<div><strong>".$errnos[$errno][1]."</strong> ($errno)</div>\n";
 						echo "<div class='e_txt'>$errstr</div>\n";
@@ -132,10 +134,10 @@ class Error {
 						echo "<div><strong>Line:</strong> ".$errtrace[2]['line']."</div>\n";
 					echo "</div>\n";
 				}
-				if ($log_sys) self::StoreLog("error_user","Message: $errstr<br />File: ".$errtrace[2]['file']."<br />Line: ".$errtrace[2]['line']);
+				if ($log_sys) self::StoreLog("error_user","Message: $errstr<br />File: ".$errtrace[2]['file']."<br />Line: ".$errtrace[2]['line']."<br />URI:".$Visitor['request_uri']);
 			} else {
 				//Sys
-				if ($User->IsAdmin() && error_reporting()<>0) {
+				if ($User->IsAdmin()) {
 					echo "<div class='error_sys'>\n";
 						echo "<div><strong>".$errnos[$errno][1]."</strong> ($errno)</div>\n";
 						echo "<div class='e_txt'>$errstr</div>\n";
@@ -143,7 +145,7 @@ class Error {
 						echo "<div><strong>Line:</strong> $errline</div>\n";
 					echo "</div>\n";
 				}
-				if ($log_sys) self::StoreLog("error_sys","Message: $errstr<br />File: $errfile<br />Line: $errline");
+				if ($log_sys) self::StoreLog("error_sys","Message: $errstr<br />File: $errfile<br />Line: $errline"."<br />URI:".$Visitor['request_uri']);
 			}
 		} else {
 			//Simple error display
@@ -151,7 +153,7 @@ class Error {
 				echo "<div style='padding:4px;background-color:#FFF0F0;color:#990000;'>$errstr</div>\n";
 			echo "</div>";
 			
-			if ($log_sys) self::StoreLog("error_sys","Message: $errstr<br />File: $errfile<br />Line: $errline");
+			if ($log_sys) self::StoreLog("error_sys","Message: $errstr<br />File: $errfile<br />Line: $errline"."<br />URI:".$Visitor['request_uri']);
 		}
 	}
 

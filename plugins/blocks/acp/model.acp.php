@@ -535,10 +535,10 @@ class blocksModel {
 
 									Utils::Redirect("admin.php?cont="._PLUGIN);
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
                         ?>
                             </div>           
@@ -836,10 +836,10 @@ class blocksModel {
 
                                         Utils::Redirect("admin.php?cont="._PLUGIN);
                                     } else {
-                                        Error::Trigger("USERERROR",implode("<br />",$errors));
+                                        MemErr::Trigger("USERERROR",implode("<br />",$errors));
                                     }
                                 } else {
-                                    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+                                    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
                                 }
                             ?>
                                 </div>
@@ -847,7 +847,7 @@ class blocksModel {
                             <?php
                             }
                         } else {
-                            Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("BLOCK")));
+                            MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("BLOCK")));
                         }
                         ?>
                 </td>
@@ -1175,10 +1175,10 @@ class blocksModel {
 
 									Utils::Redirect("admin.php?cont="._PLUGIN);
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
                         ?>
                             </div>
@@ -1470,10 +1470,10 @@ class blocksModel {
 
                                         Utils::Redirect("admin.php?cont="._PLUGIN);
                                     } else {
-                                        Error::Trigger("USERERROR",implode("<br />",$errors));
+                                        MemErr::Trigger("USERERROR",implode("<br />",$errors));
                                     }
                                 } else {
-                                    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+                                    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
                                 }
                             ?>
                                 </div>
@@ -1481,7 +1481,7 @@ class blocksModel {
                             <?php
                             }
                         } else {
-                            Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("BLOCK")));
+                            MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("BLOCK")));
                         }
                         ?>
                 </td>

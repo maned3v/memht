@@ -558,15 +558,15 @@ class pluginsModel {
                                     }
 
                                     if (!empty($setupresult)) {
-                                    	Error::Trigger("INFO",$setupresult,"<a href='admin.php?cont="._PLUGIN."' title='"._t("CONTINUE")."'>"._t("CONTINUE")."</a>");
+                                    	MemErr::Trigger("INFO",$setupresult,"<a href='admin.php?cont="._PLUGIN."' title='"._t("CONTINUE")."'>"._t("CONTINUE")."</a>");
                                     } else {
                                     	Utils::Redirect("admin.php?cont="._PLUGIN);
                                     }
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
                         ?>
                             </div>           
@@ -914,10 +914,10 @@ class pluginsModel {
 
                                         Utils::Redirect("admin.php?cont="._PLUGIN);
                                     } else {
-                                        Error::Trigger("USERERROR",implode("<br />",$errors));
+                                        MemErr::Trigger("USERERROR",implode("<br />",$errors));
                                     }
                                 } else {
-                                    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+                                    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
                                 }
                             ?>
                                 </div>
@@ -925,7 +925,7 @@ class pluginsModel {
                             <?php
                             }
                         } else {
-                            Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
+                            MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
                         }
                         ?>
                 </td>
@@ -1014,12 +1014,12 @@ class pluginsModel {
 	                        	$Db->Query("DELETE FROM #__content WHERE id='".intval($id)."'");
 	                        	
 	                        	if (!empty($setupresult)) {
-	                        		Error::Trigger("INFO",$setupresult,"<a href='admin.php?cont="._PLUGIN."' title='"._t("CONTINUE")."'>"._t("CONTINUE")."</a>");
+	                        		MemErr::Trigger("INFO",$setupresult,"<a href='admin.php?cont="._PLUGIN."' title='"._t("CONTINUE")."'>"._t("CONTINUE")."</a>");
 	                        	} else {
 	                        		Utils::Redirect("admin.php?cont="._PLUGIN);
 	                        	}
                         	} else {
-                        		Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
+                        		MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
                         	}
                         	
                         	?>
@@ -1323,10 +1323,10 @@ class pluginsModel {
 
 									Utils::Redirect("admin.php?cont="._PLUGIN."&type=static");
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
                         ?>
                             </div>
@@ -1645,10 +1645,10 @@ class pluginsModel {
 
                                         Utils::Redirect("admin.php?cont="._PLUGIN."&type=static");
                                     } else {
-                                        Error::Trigger("USERERROR",implode("<br />",$errors));
+                                        MemErr::Trigger("USERERROR",implode("<br />",$errors));
                                     }
                                 } else {
-                                    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+                                    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
                                 }
                             ?>
                                 </div>
@@ -1656,7 +1656,7 @@ class pluginsModel {
                             <?php
                             }
                         } else {
-                            Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
+                            MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
                         }
                         ?>
                 </td>
@@ -2072,10 +2072,10 @@ class pluginsModel {
                                     
 									Utils::Redirect("admin.php?cont="._PLUGIN."&op=menu");
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
                         ?>
                             </div>
@@ -2248,10 +2248,10 @@ class pluginsModel {
 
                                         Utils::Redirect("admin.php?cont="._PLUGIN."&op=menu");
                                     } else {
-                                        Error::Trigger("USERERROR",implode("<br />",$errors));
+                                        MemErr::Trigger("USERERROR",implode("<br />",$errors));
                                     }
                                 } else {
-                                    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+                                    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
                                 }
                                 ?>
                                 </div>
@@ -2259,7 +2259,7 @@ class pluginsModel {
                             <?php
                             }
                         } else {
-                            Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("LINK")));
+                            MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("LINK")));
                         }
                         ?>
                 </td>
@@ -2490,14 +2490,14 @@ class pluginsModel {
     
                                             Utils::Redirect("admin.php?cont="._PLUGIN."&op=menuacp");
                                         } else {
-                                            Error::Trigger("USERERROR",implode("<br />",$errors));
+                                            MemErr::Trigger("USERERROR",implode("<br />",$errors));
                                         }
                                     } else {
-                                        Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+                                        MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
                                     }
                                 }
                             } else {
-                                Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("LINK")));
+                                MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("LINK")));
                             }
                             ?>
                         	</div>
@@ -2632,7 +2632,7 @@ class pluginsModel {
 							<div class="ui-widget-header"><?php echo $controller; ?></div>
 							<div class="body">
 							<?php
-                        	Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
+                        	MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
                         }
                         ?>
                         
@@ -2755,10 +2755,10 @@ class pluginsModel {
     												
     									Utils::Redirect("admin.php?cont="._PLUGIN."&op=options&controller=$controller");
     								} else {
-    									Error::Trigger("USERERROR",implode("<br />",$errors));
+    									MemErr::Trigger("USERERROR",implode("<br />",$errors));
     								}
     							} else {
-    								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+    								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
     							}
     							
     							?>
@@ -2859,14 +2859,14 @@ class pluginsModel {
 	    												
 	    									Utils::Redirect("admin.php?cont="._PLUGIN."&op=options&controller=$controller");
 	    								} else {
-	    									Error::Trigger("USERERROR",implode("<br />",$errors));
+	    									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 	    								}
 	    							} else {
-	    								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+	    								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 	    							}
     							}
     						} else {
-    							Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
+    							MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("PLUGIN")));
     						}
     						?>						
     											
@@ -3200,10 +3200,10 @@ class pluginsModel {
     									
                     					Utils::Redirect("admin.php?cont="._PLUGIN."&op=redirects");
                     				} else {
-                    					Error::Trigger("USERERROR",implode("<br />",$errors));
+                    					MemErr::Trigger("USERERROR",implode("<br />",$errors));
                     				}
                     			} else {
-                    				Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+                    				MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
                     			}
                             }                            
                 echo "</td>";
@@ -3374,14 +3374,14 @@ class pluginsModel {
                                             $Db->Query("UPDATE #__content SET title='".$Db->_e($title)."',name='".$Db->_e($name)."',content='".$Db->_e($url)."',roles='".$Db->_e($roles)."',status='".$Db->_e($status)."' WHERE id=".intval($id));         	                             	
                         					Utils::Redirect("admin.php?cont="._PLUGIN."&op=redirects");
                         				} else {
-                        					Error::Trigger("USERERROR",implode("<br />",$errors));
+                        					MemErr::Trigger("USERERROR",implode("<br />",$errors));
                         				}
                         			} else {
-                        				Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+                        				MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
                         			}
                                 }
     					} else {
-    						Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("REDIRECTION")));
+    						MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("REDIRECTION")));
     					}                                                        
                 echo "</td>";
             echo "</tr>";

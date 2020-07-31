@@ -233,7 +233,7 @@ class contactModel {
 									<div class="ui-widget-header"><?php echo _PLUGIN_TITLE; ?></div>
 									<div class="body">
 										<?php
-										Error::Trigger("INFO",_t("SAVED"));
+										MemErr::Trigger("INFO",_t("SAVED"));
 										?>
 									</div>
 								</div>
@@ -250,7 +250,7 @@ class contactModel {
 									<div class="ui-widget-header"><?php echo _PLUGIN_TITLE; ?></div>
 									<div class="body">
 										<?php
-										Error::Trigger("USERERROR",_t("INTERROR","ACM_e001"));
+										MemErr::Trigger("USERERROR",_t("INTERROR","ACM_e001"));
 										?>
 									</div>
 								</div>
@@ -269,7 +269,7 @@ class contactModel {
 							<div class="ui-widget-header"><?php echo _PLUGIN_TITLE; ?></div>
 							<div class="body">
 								<?php
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								?>
 							</div>
 						</div>

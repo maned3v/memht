@@ -52,7 +52,7 @@ class BaseSecurity {
 				//Ban the new ip address (user logged in with different ip address)
 				$Db->Query("INSERT INTO #__banned (uid,ip,iprange,expire,reason,author,bandate)
 							VALUES ('".intval($uid)."','".$Db->_e($ip)."','0','".$Db->_e($expire)."','User (".intval($uid).") rebanned with a new ip address.','".intval($author)."',NOW())");
-				Error::StoreLog("sys_ban","User (".intval($uid).") rebanned with a new ip address: ".Utils::Num2Ip($ip));
+				MemErr::StoreLog("sys_ban","User (".intval($uid).") rebanned with a new ip address: ".Utils::Num2Ip($ip));
 			}
 
 			//Show ban screen

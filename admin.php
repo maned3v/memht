@@ -58,7 +58,7 @@ if ($User->IsAdmin()) {
 //Flush buffer and turn it off
 if (ob_get_status()) ob_end_flush();
 
-//Utils::Debug(Error::GetLog());
+//Utils::Debug(MemErr::GetLog());
 //Utils::Debug($Db->GetQueries());
 //Utils::Debug($_GET);
 

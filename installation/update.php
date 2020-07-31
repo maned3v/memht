@@ -16,7 +16,8 @@ template_header($step);
 
 $versions = array("5.0.0.5"	=> 5005,
 				  "5.0.0.9"	=> 5009,
-				  "5.0.1.0"	=> 5010);
+				  "5.0.1.0"	=> 5010,
+				  "5.0.1.1" => 5011);
 
 if (!defined("_INSTALLED")) die("Not installed yet");
 
@@ -95,6 +96,9 @@ function tablesupdate() {
                 require_once("update5009.php");
 				break;
 			case 5010:
+				echo "<div class='lilstep'>Ok, let's do it... AaaaAaaaAAAAaaaaa wattaaAAaa argGGGgggghhhaaAAAaaaaa!!!!!!</div>";
+				break;
+			case 5011:
                 echo "<div class='error'>Your MemHT seems to be already up to date! Aborting!!!!!</div>";
 				exit;
 				break;
@@ -130,13 +134,16 @@ function finish() {
  * */
 
 if (version_compare(PHP_VERSION, '6.0.0') >= 0) {
-	function get_magic_quotes_gpc(){
-		return false;
+	if (!function_exists("get_magic_quotes_gpc")) {
+		function get_magic_quotes_gpc(){
+			return false;
+		}
 	}
 }
 
 function in($string) {
-	if (get_magic_quotes_gpc()) $string = stripslashes($string);
+	//Deprecated
+	//if (get_magic_quotes_gpc()) $string = stripslashes($string);
 	return htmlspecialchars($string,ENT_QUOTES,'UTF-8');
 }
 

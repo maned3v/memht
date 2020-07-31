@@ -61,7 +61,7 @@ class BaseCaptcha {
 		} else if ($return) {
 			return _t("WRONG_CAPTCHA_TEXT");
 		} else {
-			Error::Trigger("USERERROR",_t("WRONG_CAPTCHA_TEXT"));
+			MemErr::Trigger("USERERROR",_t("WRONG_CAPTCHA_TEXT"));
 		}
 	}
 }

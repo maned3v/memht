@@ -52,7 +52,7 @@ class BaseRouter {
 
 		$querystring = $Visitor['query_string'];
 		if ($querystring==false && !isset($_SERVER['QUERY_STRING']) && !isset($_SERVER['argv']))
-			Error::Trigger("USERERROR",_t("REQUEST_URL_CANNOT_BE_PROCESSED"),$Visitor['request_uri']);
+			MemErr::Trigger("USERERROR",_t("REQUEST_URL_CANNOT_BE_PROCESSED"),$Visitor['request_uri']);
 
 		//Rebuild query string from rewritten urls
 		if (!preg_match("#index.php#i",$Visitor['request_uri']) && !empty($querystring)) {
@@ -203,6 +203,7 @@ class BaseRouter {
 					$controller = new $class();
 
 					$action = (is_callable(array($controller,$this->action))==false) ? "index" : $this->action ;
+					
 					$controller->$action();
 					break;
 

@@ -56,7 +56,7 @@ function template_header($step) {
 	<div class="tpl_head">
 		<div class="tpl_inner">
 	    	<div style="float:left;">MemHT Installer</div>
-	        <div style="text-align:right;">5.0.1.0</div>
+	        <div style="text-align:right;">5.0.1.1</div>
 	    </div>
 	</div>
 	<div class="tpl_head_logo">

@@ -41,7 +41,7 @@ class errorModel {
 		//Start buffering content
 		Utils::StartBuffering();
 			
-		Error::Trigger("USERERROR","Error 404: Page not found!");
+		MemErr::Trigger("USERERROR","Error 404: Page not found!");
 			
 		//Assign captured content to the template engine and clean buffer
 		Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,"url"=>"admin.php?cont="._PLUGIN,"content"=>Utils::GetBufferContent("clean")));

@@ -69,7 +69,7 @@ class captchamodel extends Views {
 		$characterrotationmode = 0;
 		$codelength = 7;		
 		$securitycode = Utils::GenerateRandomString(7,"23456789acdefikLnprsvxyz");
-		$font = "plugins"._DS."captcha"._DS."sans.ttf";
+		$font = realpath("plugins"._DS."captcha"._DS."sans.ttf");
 		$fontsize = $height * 0.78;
 
 		//Chars
@@ -84,7 +84,7 @@ class captchamodel extends Views {
 			$angle = mt_rand(-$characterrotationmode,$characterrotationmode);
 			$y = $height - $height/4;
 			$x = $x + $w*1.05;
-			ImageTtfText($im,$size,$angle,$x-$w,$y,$color,$font,$securitycode[$i]);
+			imagettftext($im,$size,$angle,$x-$w,$y,$color,$font,$securitycode[$i]);
 		}
 		
 		//Squares

@@ -239,7 +239,7 @@ class blogModel extends Views {
 					Utils::AddTitleStep($tagtitle);
 				}
 			} else {
-				Error::Trigger("INFO",_t("LIST_EMPTY"));
+				MemErr::Trigger("INFO",_t("LIST_EMPTY"));
 			}
 			
 			//======================================================
@@ -455,7 +455,7 @@ class blogModel extends Views {
 					//Start buffering content
 					Utils::StartBuffering();
 					
-					Error::Trigger("USERERROR",_t("NOT_AUTH_TO_ACCESS_X",MB::strtolower(_t("POST"))));
+					MemErr::Trigger("USERERROR",_t("NOT_AUTH_TO_ACCESS_X",MB::strtolower(_t("POST"))));
 				}
 			} else {
 				//Initialize and show site header
@@ -463,7 +463,7 @@ class blogModel extends Views {
 				//Start buffering content
 				Utils::StartBuffering();
 				
-				Error::Trigger("INFO",_t("X_NOT_FOUND_OR_INACTIVE",_t("POST")));
+				MemErr::Trigger("INFO",_t("X_NOT_FOUND_OR_INACTIVE",_t("POST")));
 			}
 
 			//======================================================
@@ -504,7 +504,7 @@ class blogModel extends Views {
 			//Start buffering content
 			Utils::StartBuffering();
 
-			Error::Trigger("USERERROR",$msg);
+			MemErr::Trigger("USERERROR",$msg);
 
 			//Assign captured content to the template engine and clean buffer
 			Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,
@@ -554,7 +554,7 @@ class blogModel extends Views {
 			//Start buffering content
 			Utils::StartBuffering();
 
-			Error::Trigger("USERERROR",$msg);
+			MemErr::Trigger("USERERROR",$msg);
 
 			//Assign captured content to the template engine and clean buffer
 			Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,
@@ -753,13 +753,13 @@ class blogModel extends Views {
 						$result = $Email->Send();
 						
 						if ($result) {
-							Error::Trigger("INFO",_t('MESSAGE_SENT'));
+							MemErr::Trigger("INFO",_t('MESSAGE_SENT'));
 						} else {
-							Error::StoreLog("error_sys","Message: Email not sent<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
-							Error::Trigger("USERERROR",_t('MESSAGE_NOT_SENT'),implode(",",$Email->GetErrors()));
+							MemErr::StoreLog("error_sys","Message: Email not sent<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
+							MemErr::Trigger("USERERROR",_t('MESSAGE_NOT_SENT'),implode(",",$Email->GetErrors()));
 						}
 					} else {
-						Error::Trigger("USERERROR",implode("<br />",$errors));
+						MemErr::Trigger("USERERROR",implode("<br />",$errors));
 					}
 				}
 			default:
@@ -830,7 +830,7 @@ class blogModel extends Views {
 			//Start buffering content
 			Utils::StartBuffering();
 
-			Error::Trigger("USERERROR",implode("<br />",$errors));
+			MemErr::Trigger("USERERROR",implode("<br />",$errors));
 
 			//Assign captured content to the template engine and clean buffer
 			Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,

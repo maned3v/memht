@@ -212,7 +212,7 @@ class userModel extends Views {
 							//Start buffering content
 							Utils::StartBuffering();
 						
-							Error::Trigger("INFO",_t("ACCOUNT_SOCIAL_EMAIL_EXISTS_X",$profile['name']),_t("ACCOUNT_SOCIAL_EMAIL_DETAILS_X_Y",Io::Output($row['name']),Io::Output($row['email'])));
+							MemErr::Trigger("INFO",_t("ACCOUNT_SOCIAL_EMAIL_EXISTS_X",$profile['name']),_t("ACCOUNT_SOCIAL_EMAIL_DETAILS_X_Y",Io::Output($row['name']),Io::Output($row['email'])));
 						
 						} else if (isset($profile['email'])) {
 							//Create the new user
@@ -276,10 +276,10 @@ class userModel extends Views {
 							//Start buffering content
 							Utils::StartBuffering();
 								
-							Error::Trigger("INFO",_t('ACCOUNT_ACTIVATED'),_t("ACCOUNT_LOGIN_DETAILS_X_Y_Z",$username,$password,RewriteUrl("index.php?"._NODE."="._PLUGIN."&op=social&engine=google")));
+							MemErr::Trigger("INFO",_t('ACCOUNT_ACTIVATED'),_t("ACCOUNT_LOGIN_DETAILS_X_Y_Z",$username,$password,RewriteUrl("index.php?"._NODE."="._PLUGIN."&op=social&engine=google")));
 						
 							if (!$result) {
-								Error::StoreLog("error_sys","Message: Social account activation email not sent<br />User: [$uid] $username (".$profile['email'].")<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
+								MemErr::StoreLog("error_sys","Message: Social account activation email not sent<br />User: [$uid] $username (".$profile['email'].")<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
 							}
 						} else {
 							//Can't create the new user without an email
@@ -368,7 +368,7 @@ class userModel extends Views {
 						//Start buffering content
 						Utils::StartBuffering();
 						
-						Error::Trigger("INFO",_t("ACCOUNT_SOCIAL_EMAIL_EXISTS_X",$user_profile['name']),_t("ACCOUNT_SOCIAL_EMAIL_DETAILS_X_Y",Io::Output($row['name']),Io::Output($row['email'])));
+						MemErr::Trigger("INFO",_t("ACCOUNT_SOCIAL_EMAIL_EXISTS_X",$user_profile['name']),_t("ACCOUNT_SOCIAL_EMAIL_DETAILS_X_Y",Io::Output($row['name']),Io::Output($row['email'])));
 						
 					} else if (isset($user_profile['email'])) {
 						//Create the new user
@@ -433,10 +433,10 @@ class userModel extends Views {
 						//Start buffering content
 						Utils::StartBuffering();
 					
-						Error::Trigger("INFO",_t('ACCOUNT_ACTIVATED'),_t("ACCOUNT_LOGIN_DETAILS_X_Y_Z",$username,$password,RewriteUrl("index.php?"._NODE."="._PLUGIN."&op=social&engine=facebook")));
+						MemErr::Trigger("INFO",_t('ACCOUNT_ACTIVATED'),_t("ACCOUNT_LOGIN_DETAILS_X_Y_Z",$username,$password,RewriteUrl("index.php?"._NODE."="._PLUGIN."&op=social&engine=facebook")));
 						
 						if (!$result) {
-							Error::StoreLog("error_sys","Message: Social account activation email not sent<br />User: [$uid] $username (".$user_profile['email'].")<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
+							MemErr::StoreLog("error_sys","Message: Social account activation email not sent<br />User: [$uid] $username (".$user_profile['email'].")<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
 						}
 					} else {
 						//Can't create the new user without an email
@@ -499,7 +499,7 @@ class userModel extends Views {
 			//Start buffering content
 			Utils::StartBuffering();
 			
-			Error::Trigger("USERERROR",implode("<br />",$errors));
+			MemErr::Trigger("USERERROR",implode("<br />",$errors));
 			
 			//Assign captured content to the template engine and clean buffer
 			Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,
@@ -645,32 +645,32 @@ class userModel extends Views {
 									$result = $Email->Send();
 
 									if ($result) {
-										Error::Trigger("INFO",_t('YOU_RECEIVE_ACT_LINK_ACCOUNT_EXPIRE_IN_X',48));
+										MemErr::Trigger("INFO",_t('YOU_RECEIVE_ACT_LINK_ACCOUNT_EXPIRE_IN_X',48));
 									} else {
-										Error::StoreLog("error_sys","Message: Activation email not sent<br />User: [$uid] $username ($email)<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
-										Error::Trigger("INFO",_t("REG_SUC_TECH_PROB_CONTACT_ADMIN_ACC_ACTIVATED"),implode("<br />",$Email->GetErrors()));
+										MemErr::StoreLog("error_sys","Message: Activation email not sent<br />User: [$uid] $username ($email)<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
+										MemErr::Trigger("INFO",_t("REG_SUC_TECH_PROB_CONTACT_ADMIN_ACC_ACTIVATED"),implode("<br />",$Email->GetErrors()));
 									}
 								} else if ($config_sys['user_signup_moderate']) {
-									Error::Trigger("INFO",_t("ACCOUNT_ACTIVED_SOON_BYADMIN"));
+									MemErr::Trigger("INFO",_t("ACCOUNT_ACTIVED_SOON_BYADMIN"));
 								} else {
-									Error::Trigger("INFO",_t("ACCOUNT_ACTIVED_NOW_UCAN_LOGIN"));
+									MemErr::Trigger("INFO",_t("ACCOUNT_ACTIVED_NOW_UCAN_LOGIN"));
 								}
 								
 								if ($config_sys['user_signup_invite']) {
 									$Db->Query("UPDATE #__user_invites SET registrations=registrations-1 WHERE code='".$Db->_e($invitecode)."'");
 								}
 							} else {
-								Error::Trigger("USERERROR",implode("<br />",$errors));
+								MemErr::Trigger("USERERROR",implode("<br />",$errors));
 							}
 						}
 					} else {
-						Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+						MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 					}
 
 					break;
 			}
 		} else {
-			Error::Trigger("INFO",_t("REG_NEWACCOUNTS_CLOSED"));
+			MemErr::Trigger("INFO",_t("REG_NEWACCOUNTS_CLOSED"));
 		}
 		
 		//Assign captured content to the template engine and clean buffer
@@ -703,16 +703,16 @@ class userModel extends Views {
 			if ($row = $Db->GetRow("SELECT code FROM #__user WHERE uid='".intval($uid)."' AND code='".$Db->_e($code)."'")) {
 				if ($config_sys['user_signup_moderate']) {
 					$Db->Query("UPDATE #__user SET status='moderate',code='' WHERE uid=".intval($uid));
-					Error::Trigger("INFO",_t("X_CONFIRMED",_t("EMAIL")).". "._t("ACCOUNT_ACTIVED_SOON_BYADMIN"));
+					MemErr::Trigger("INFO",_t("X_CONFIRMED",_t("EMAIL")).". "._t("ACCOUNT_ACTIVED_SOON_BYADMIN"));
 				} else {
 					$Db->Query("UPDATE #__user SET status='active',code='' WHERE uid=".intval($uid));
-					Error::Trigger("INFO",_t("ACCOUNT_ACTIVED_NOW_UCAN_LOGIN"));
+					MemErr::Trigger("INFO",_t("ACCOUNT_ACTIVED_NOW_UCAN_LOGIN"));
 				}
 			} else {
-				Error::Trigger("USERERROR",_t("CODE_WRONG_OR_ACCOUNT_EXPIRED"));
+				MemErr::Trigger("USERERROR",_t("CODE_WRONG_OR_ACCOUNT_EXPIRED"));
 			}
 		} else {
-			Error::Trigger("INFO",_t("REG_NEWACCOUNTS_CLOSED"));
+			MemErr::Trigger("INFO",_t("REG_NEWACCOUNTS_CLOSED"));
 		}
 		
 		//Assign captured content to the template engine and clean buffer
@@ -784,20 +784,20 @@ class userModel extends Views {
 
 								if ($result) {
 									$Db->Query("UPDATE #__user SET code='".$Db->_e($code)."',lastip='".$Db->_e(Utils::Ip2num($Visitor['ip']))."' WHERE uid='".intval($uid)."'");
-									Error::Trigger("INFO",_t('YOU_RECEIVE_RESET_LINK'));
+									MemErr::Trigger("INFO",_t('YOU_RECEIVE_RESET_LINK'));
 								} else {
-									Error::StoreLog("error_sys","Message: Reset email not sent<br />User: [$uid] $user ($email)<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
-									Error::Trigger("USERERROR",_t("ERROR_SENDING_MAIL_CONTACT_ADMIN"),implode("<br />",$Email->GetErrors()));
+									MemErr::StoreLog("error_sys","Message: Reset email not sent<br />User: [$uid] $user ($email)<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
+									MemErr::Trigger("USERERROR",_t("ERROR_SENDING_MAIL_CONTACT_ADMIN"),implode("<br />",$Email->GetErrors()));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("EMAIL")));
+								MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("EMAIL")));
 							}
 						} else {
-							Error::Trigger("USERERROR",implode("<br />",$errors));
+							MemErr::Trigger("USERERROR",implode("<br />",$errors));
 						}
 					}
 				} else {
-					Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+					MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 				}
 				
 				break;
@@ -862,10 +862,10 @@ class userModel extends Views {
 						
 						$form->Close();
 					} else {
-						Error::Trigger("USERERROR",_t("CODE_WRONG"));
+						MemErr::Trigger("USERERROR",_t("CODE_WRONG"));
 					}
 				} else {
-					Error::Trigger("USERERROR",implode("<br />",$errors));
+					MemErr::Trigger("USERERROR",implode("<br />",$errors));
 				}
 				break;
 			case "reset":
@@ -887,16 +887,16 @@ class userModel extends Views {
 								$name = Io::Output($row['name']);
 								$Db->Query("UPDATE #__user SET pass='".md5($password)."',code='' WHERE uid='".intval($uid)."'");
 								
-								Error::Trigger("INFO",_t("PASSWORD_CHANGED_USER_IS_X",$user));
+								MemErr::Trigger("INFO",_t("PASSWORD_CHANGED_USER_IS_X",$user));
 							} else {
-								Error::Trigger("USERERROR",_t("VERIF_DATA_MISSING"));
+								MemErr::Trigger("USERERROR",_t("VERIF_DATA_MISSING"));
 							}
 						} else {
-							Error::Trigger("USERERROR",implode("<br />",$errors));
+							MemErr::Trigger("USERERROR",implode("<br />",$errors));
 						}
 					}
 				} else {
-					Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+					MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 				}
 				break;
 		}
@@ -965,7 +965,7 @@ class userModel extends Views {
 			
 			$Ext->RunMext("UserInfo",array($uid,$row));
 		} else {
-			Error::Trigger("INFO",_t("X_NOT_FOUND_OR_INACTIVE",_t("USER")));
+			MemErr::Trigger("INFO",_t("X_NOT_FOUND_OR_INACTIVE",_t("USER")));
 		}
 		
 		//Assign captured content to the template engine and clean buffer
@@ -1247,10 +1247,10 @@ class userModel extends Views {
 						
 						Utils::Redirect("index.php?"._NODE."="._PLUGIN);
 					} else {
-						Error::Trigger("USERERROR",implode("<br />",$errors));
+						MemErr::Trigger("USERERROR",implode("<br />",$errors));
 					}
 				} else {
-					Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+					MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 				}
 				break;
 		}
@@ -1326,10 +1326,10 @@ class userModel extends Views {
 						$User->Logout();
 						Utils::Redirect("index.php?"._NODE."="._PLUGIN);
 					} else {
-						Error::Trigger("USERERROR",implode("<br />",$errors));
+						MemErr::Trigger("USERERROR",implode("<br />",$errors));
 					}
 				} else {
-					Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+					MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 				}
 				break;
 		}

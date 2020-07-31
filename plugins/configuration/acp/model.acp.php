@@ -614,13 +614,13 @@ class configurationModel {
 						('terms_of_use_notice','".$Db->_e($terms_of_use_notice)."'),
 						('terms_of_use_controller','".$Db->_e($terms_of_use_controller)."'),
 						('cronjobs','".$Db->_e($cronjobs)."')")) { //+Additional
-				Error::Trigger("INFO",_t("X_SAVED",_t("CONFIGURATION")));
+				MemErr::Trigger("INFO",_t("X_SAVED",_t("CONFIGURATION")));
 				Utils::Redirect("admin.php?cont="._PLUGIN);
 			} else {
-				Error::Trigger("USERERROR",_t("X_NOT_SAVED",_t("CONFIGURATION")));
+				MemErr::Trigger("USERERROR",_t("X_NOT_SAVED",_t("CONFIGURATION")));
 			}
 		} else {
-			Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+			MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 		}
 		
 		//Assign captured content to the template engine and clean buffer
@@ -848,10 +848,10 @@ class configurationModel {
 	
 										Utils::Redirect("admin.php?cont="._PLUGIN."&op=languages");
 									} else {
-										Error::Trigger("USERERROR",implode("<br />",$errors));
+										MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									}
 								} else {
-									Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+									MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								}
 	
 								?>
@@ -958,14 +958,14 @@ class configurationModel {
 	
 											Utils::Redirect("admin.php?cont="._PLUGIN."&op=languages");
 										} else {
-											Error::Trigger("USERERROR",implode("<br />",$errors));
+											MemErr::Trigger("USERERROR",implode("<br />",$errors));
 										}
 									} else {
-										Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+										MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 									}
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("SECTION")));
+								MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("SECTION")));
 							}
 							?>
 	
@@ -1148,10 +1148,10 @@ class configurationModel {
 	                                             	
 										Utils::Redirect("admin.php?cont="._PLUGIN."&op=chars");
 									} else {
-										Error::Trigger("USERERROR",implode("<br />",$errors));
+										MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									}
 								} else {
-								    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								}
 						    }
 	
@@ -1231,14 +1231,14 @@ class configurationModel {
 	                                        $Db->Query("UPDATE #__conv_chars SET `pattern`='".$Db->_e($pattern)."',`replace`='".$Db->_e($replace)."' WHERE id=".intval($id));
 	    									Utils::Redirect("admin.php?cont="._PLUGIN."&op=chars");
 	    								} else {
-	    									Error::Trigger("USERERROR",implode("<br />",$errors));
+	    									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 	    								}
 	    							} else {
-	    							    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+	    							    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 	    							}
 	    					    }
 							} else {
-								Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("CHARACTER")));
+								MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("CHARACTER")));
 							}
 	                    echo "</div>";
 	                echo "</div>";
@@ -1532,10 +1532,10 @@ class configurationModel {
         												
         									Utils::Redirect("admin.php?cont="._PLUGIN."&op=options");
         								} else {
-        									Error::Trigger("USERERROR",implode("<br />",$errors));
+        									MemErr::Trigger("USERERROR",implode("<br />",$errors));
         								}
         							} else {
-        								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+        								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
         							}
         							
         							?>

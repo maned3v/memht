@@ -432,7 +432,7 @@ class userModel {
                                 echo "</tbody>\n";
                                 echo "</table>\n";
                             } else {
-								Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("USER")));
+								MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("USER")));
                             }
                             ?>
                         </div>
@@ -482,7 +482,7 @@ class userModel {
 				//Start buffering content
 				Utils::StartBuffering();
 
-				Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+				MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 
 				//Assign captured content to the template engine and clean buffer
 				Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,"url"=>"admin.php?cont="._PLUGIN,"content"=>Utils::GetBufferContent("clean")));
@@ -607,7 +607,7 @@ class userModel {
 			$result = $Email->Send();
 			
 			if (!$result) {
-				Error::StoreLog("error_sys","Message: Activation email not sent<br />User: [$uid] $user ($email)<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
+				MemErr::StoreLog("error_sys","Message: Activation email not sent<br />User: [$uid] $user ($email)<br />File: ".__FILE__."<br />Line: ".__LINE__."<br />Details: ".implode(",",$Email->GetErrors()));
 			}			
 		}
 
@@ -788,12 +788,12 @@ class userModel {
 										$Db->Query("INSERT INTO #__user (uid,user,name,pass,email,regdate,roles,status)
 													VALUES (null,'".$Db->_e($username)."','".$Db->_e($displayname)."','".md5($password)."','".$Db->_e($email)."',NOW(),'".$Db->_e($roles)."','".$Db->_e($status)."')");
 
-										Error::Trigger("INFO",_t("ACCOUNT_CREATED"));
+										MemErr::Trigger("INFO",_t("ACCOUNT_CREATED"));
 									} else {
-										Error::Trigger("USERERROR",implode("<br />",$errors));
+										MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									}
 								} else {
-									Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+									MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								}
 							?>
                             </div>
@@ -980,12 +980,12 @@ class userModel {
 
 											$Db->Query("UPDATE #__user SET user='".$Db->_e($username)."',name='".$Db->_e($displayname)."'{$pass},email='".$Db->_e($email)."',roles='".$Db->_e($roles)."',status='".$Db->_e($status)."' WHERE uid=".intval($uid));
 
-											Error::Trigger("INFO",_t("ACCOUNT_MODIFIED"));
+											MemErr::Trigger("INFO",_t("ACCOUNT_MODIFIED"));
 										} else {
-											Error::Trigger("USERERROR",implode("<br />",$errors));
+											MemErr::Trigger("USERERROR",implode("<br />",$errors));
 										}
 									} else {
-										Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+										MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 									}
 								?>
 								</div>
@@ -993,7 +993,7 @@ class userModel {
 							<?php
 							}
 						} else {
-							Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("USER")));
+							MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("USER")));
 						}
                         ?>
                 </td>
@@ -1259,10 +1259,10 @@ class userModel {
 
 									Utils::Redirect("admin.php?cont="._PLUGIN."&op=profile");
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
 
 							?>
@@ -1396,14 +1396,14 @@ class userModel {
 
 										Utils::Redirect("admin.php?cont="._PLUGIN."&op=profile");
 									} else {
-										Error::Trigger("USERERROR",implode("<br />",$errors));
+										MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									}
 								} else {
-									Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+									MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								}
 							}
 						} else {
-							Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("FIELD")));
+							MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("FIELD")));
 						}
 							?>
 											</div>
@@ -1695,10 +1695,10 @@ class userModel {
 	                                             	
 										Utils::Redirect("admin.php?cont="._PLUGIN."&op=invitations");
 									} else {
-										Error::Trigger("USERERROR",implode("<br />",$errors));
+										MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									}
 								} else {
-								    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								}
 						    }
 	
@@ -1813,14 +1813,14 @@ class userModel {
 	                                        $Db->Query("UPDATE #__user_invites SET code='".$Db->_e($code)."',registrations='".$Db->_e($registrations)."',expiration='".$Db->_e($expiration)."' WHERE id=".intval($id));          	
 	    									Utils::Redirect("admin.php?cont="._PLUGIN."&op=invitations");
 	    								} else {
-	    									Error::Trigger("USERERROR",implode("<br />",$errors));
+	    									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 	    								}
 	    							} else {
-	    							    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+	    							    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 	    							}                               
 	    					    }
 							} else {
-								Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("CHARACTER")));
+								MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("CHARACTER")));
 							}
 	                    echo "</div>";
 	                echo "</div>";            
@@ -2113,10 +2113,10 @@ class userModel {
                                                  	
     									Utils::Redirect("admin.php?cont="._PLUGIN."&op=roles");
     								} else {
-    									Error::Trigger("USERERROR",implode("<br />",$errors));
+    									MemErr::Trigger("USERERROR",implode("<br />",$errors));
     								}
     							} else {
-    							    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+    							    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
     							}
     					    }                    
                         
@@ -2267,14 +2267,14 @@ class userModel {
                                             $Db->Query("UPDATE #__rba_roles SET label='".$Db->_e($label)."',title='".$Db->_e($title)."',options='".$Db->_e($options)."' WHERE rid=".intval($id));         	
         									Utils::Redirect("admin.php?cont="._PLUGIN."&op=roles");
         								} else {
-        									Error::Trigger("USERERROR",implode("<br />",$errors));
+        									MemErr::Trigger("USERERROR",implode("<br />",$errors));
         								}
         							} else {
-        							    Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+        							    MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
         							}
         					    }
                             } else {
-    							Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("ROLE")));
+    							MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("ROLE")));
     						}                    
                         
                         echo "</div>";

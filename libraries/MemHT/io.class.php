@@ -108,6 +108,8 @@ class Io {
 	
 	static function Filter($var,$filter=false,$encode=true) {
 		global $config_sys;
+		/*
+		Deprecated
 		if (get_magic_quotes_gpc()) {
 			if (is_array($var)) {
 				array_walk_recursive($var,array('self','arrayStripslashes'));
@@ -115,6 +117,7 @@ class Io {
 				$var = stripslashes($var);
 			}
 		}
+		*/
 		
 		switch (MB::strtolower($filter)) {
 			//Simple

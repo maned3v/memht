@@ -87,7 +87,7 @@ require_once(_PATH_ACP_INCLUDES._DS."layout.inc.php"); //Site layout structure
 require_once(_PATH_LIBRARIES._DS."MemHT"._DS."diff.class.php"); //Text diff
 
 //Check if the installation folder is still there
-if (is_dir(_PATH_INSTALLATION)) Error::Trigger("USERERROR",_t("DELETE_THE_INSTALLATION_FOLDER"));
+if (is_dir(_PATH_INSTALLATION)) MemErr::Trigger("USERERROR",_t("DELETE_THE_INSTALLATION_FOLDER"));
 
 //Site title step
 Utils::AddTitleStep($config_sys['site_name']);

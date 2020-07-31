@@ -145,7 +145,7 @@ class searchModel extends Views {
 								$this->output = $searchres;
 								$this->Show("search_results");
 							} else {
-								Error::Trigger("INFO",_t("NO_RESULTS_FOUND"));
+								MemErr::Trigger("INFO",_t("NO_RESULTS_FOUND"));
 							}
 							break;
 						default:
@@ -166,25 +166,25 @@ class searchModel extends Views {
 											$this->output = $found;
 											$this->Show("search_results");
 										} else {
-											Error::Trigger("INFO",_t("NO_RESULTS_FOUND"));
+											MemErr::Trigger("INFO",_t("NO_RESULTS_FOUND"));
 										}
 									} else {
-										Error::Trigger("INTERROR","PSM_e002");
+										MemErr::Trigger("INTERROR","PSM_e002");
 									}
 								} else {
-									Error::Trigger("INTERROR","PSM_e001");
+									MemErr::Trigger("INTERROR","PSM_e001");
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("X_NOT_FOUND_OR_INACTIVE",_t("PLUGIN")));
+								MemErr::Trigger("USERERROR",_t("X_NOT_FOUND_OR_INACTIVE",_t("PLUGIN")));
 							}
 							break;
 					}
 				} else {
-					Error::Trigger("USERERROR",_t("X_MUST_BE_MIN_Y_CHARS_LONG",MB::strtolower(_t("TEXT")),4));
+					MemErr::Trigger("USERERROR",_t("X_MUST_BE_MIN_Y_CHARS_LONG",MB::strtolower(_t("TEXT")),4));
 				}
 			}
 		} else {
-			Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+			MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 		}
 				
 		//Assign captured content to the template engine and clean buffer

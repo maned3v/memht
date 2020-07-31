@@ -132,18 +132,18 @@ class contactModel extends Views {
 					}
 	
 					if ($result) {
-						Error::Trigger("INFO",_t('MESSAGE_SENT'));
+						MemErr::Trigger("INFO",_t('MESSAGE_SENT'));
 					} else {
 						$details = ($config_sys['cnt_email_or_notify']=="email") ? "<br />Details: ".implode(",",$Email->GetErrors()) : "" ;
-						Error::StoreLog("error_sys","Message: Message not sent<br />File: ".__FILE__."<br />Line: ".__LINE__.$details);
-						Error::Trigger("USERERROR",_t('MESSAGE_NOT_SENT'),($config_sys['cnt_email_or_notify']=="email") ? implode(",",$Email->GetErrors()) : false);
+						MemErr::StoreLog("error_sys","Message: Message not sent<br />File: ".__FILE__."<br />Line: ".__LINE__.$details);
+						MemErr::Trigger("USERERROR",_t('MESSAGE_NOT_SENT'),($config_sys['cnt_email_or_notify']=="email") ? implode(",",$Email->GetErrors()) : false);
 					}
 				} else {
-					Error::Trigger("USERERROR",$msg);
+					MemErr::Trigger("USERERROR",$msg);
 				}
 			}
 		} else {
-			Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+			MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 		}
 
 		//Assign captured content to the template engine and clean buffer

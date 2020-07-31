@@ -59,6 +59,7 @@ class Utils {
 
 	static function GetBufferContent($operation=false) {
 		$content = ob_get_contents();
+		
 		switch ($operation) {
 			case "clean":
 				ob_end_clean();
@@ -83,7 +84,7 @@ class Utils {
 		if ($size===false) $size = 10;
 		if ($chars!==false) {
 			$string = "";
-			for($i=0;$i<$size;$i++) $string .= $chars{mt_rand(0,strlen($chars)-1)};			
+			for($i=0;$i<$size;$i++) $string .= $chars[mt_rand(0,strlen($chars)-1)];			
 		} else {
 			$string = md5(uniqid(mt_rand(0,time()),true));
 		}

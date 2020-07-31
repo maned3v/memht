@@ -396,7 +396,7 @@ class securityModel {
 			       			<div class="ui-widget-header"><?php echo _t("FIND_X",_t("IP")); ?></div>
 			       			<div class="body">
        							<?php
-	       							Error::Trigger("USERERROR",_t("X_NOT_VALID",_t("IP")));
+	       							MemErr::Trigger("USERERROR",_t("X_NOT_VALID",_t("IP")));
 	       						?>
 	       						</div>
        					</div>
@@ -573,10 +573,10 @@ class securityModel {
        											
        											Utils::Redirect("admin.php?cont="._PLUGIN);
        										} else {
-       											Error::Trigger("USERERROR",implode("<br />",$errors));
+       											MemErr::Trigger("USERERROR",implode("<br />",$errors));
        										}
        									} else {
-       										Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+       										MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
        									}
        								}
        								?>
@@ -596,7 +596,7 @@ class securityModel {
        						<div class="ui-widget-header"><?php echo _t("BAN_X",_t("IP")); ?></div>
        				    	    <div class="body">
        							<?php
-	       							Error::Trigger("USERERROR",_t("X_NOT_VALID",_t("IP")));
+	       							MemErr::Trigger("USERERROR",_t("X_NOT_VALID",_t("IP")));
 	       						?>
 	       						</div>
        					</div>
@@ -752,10 +752,10 @@ class securityModel {
 	       											
 	       											Utils::Redirect("admin.php?cont="._PLUGIN);
 	       										} else {
-	       											Error::Trigger("USERERROR",implode("<br />",$errors));
+	       											MemErr::Trigger("USERERROR",implode("<br />",$errors));
 	       										}
 	       									} else {
-	       										Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+	       										MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 	       									}
 	       								}
 	       								?>
@@ -775,7 +775,7 @@ class securityModel {
 	       						<div class="ui-widget-header"><?php echo _t("EDIT_X",_t("IP")); ?></div>
 	       				    	    <div class="body">
 	       							<?php
-		       							Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("IP")));
+		       							MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("IP")));
 		       						?>
 		       						</div>
 	       					</div>

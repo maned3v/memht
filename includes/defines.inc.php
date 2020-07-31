@@ -84,9 +84,12 @@ $config_sys['timezone_list'] = array(
 );
 
 if (version_compare(PHP_VERSION, '6.0.0') >= 0) {
-	function get_magic_quotes_gpc(){
-		return false;
+	if (!function_exists("get_magic_quotes_gpc")) {
+		function get_magic_quotes_gpc(){
+			return false;
+		}
 	}
 }
+
 
 ?>

@@ -45,7 +45,7 @@ class BaseViews {
 		$path = _PATH_PLUGINS._DS.$controller[0]._DS."views"._DS.$name.".php";
 	
 		if (file_exists($path)==false) {
-			Error::Trigger("WARNING","View <i>`$name`</i> not found","The path should be ".$path); //TODO: TRANSLATE
+			MemErr::Trigger("WARNING","View <i>`$name`</i> not found","The path should be ".$path); //TODO: TRANSLATE
 			return false;
 		}
 		

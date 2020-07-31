@@ -33,6 +33,8 @@ defined("_LOAD") or die("Access denied");
 
 class errorModel extends Views {
 	function ErrorPage() {
+		global $config_sys;
+		
 		header("HTTP/1.1 404 Not Found");
 		header("Status: 404 Not Found");
 		
@@ -41,7 +43,7 @@ class errorModel extends Views {
 		//Start buffering content
 		Utils::StartBuffering();
 			
-		Error::Trigger("USERERROR","Error 404: Page not found!");
+		MemErr::Trigger("USERERROR","Error 404: Page not found!");
 			
 		//Assign captured content to the template engine and clean buffer
 		Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,

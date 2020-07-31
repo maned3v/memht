@@ -475,7 +475,7 @@ class blogModel {
 
 								foreach ($sticker as $key => $value) {
 									$form->FieldsetStart("$".$key);
-									if (!empty($value)) Error::Trigger("MINFO",$value);
+									if (!empty($value)) MemErr::Trigger("MINFO",$value);
 										//Value
 										$form->AddElement(array("element"	=>"textarea",
 																"label"		=>_t("CONTENT"),
@@ -677,7 +677,7 @@ class blogModel {
 									<div class="ui-widget-header"><?php echo _t("CREATE_NEW_X",MB::strtolower(_t("POST"))); ?></div>
 									<div class="body">
 									<?php
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									?>
 									</div>
 								</div>
@@ -695,7 +695,7 @@ class blogModel {
 								<div class="ui-widget-header"><?php echo _t("CREATE_NEW_X",MB::strtolower(_t("POST"))); ?></div>
 								<div class="body">
 								<?php
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								?>
 								</div>
 							</div>
@@ -858,7 +858,7 @@ class blogModel {
 
 								foreach ($sticker as $key => $value) {
 									$form->FieldsetStart("$".$key);
-									if (!empty($value)) Error::Trigger("MINFO",$value);
+									if (!empty($value)) MemErr::Trigger("MINFO",$value);
 										//Value
 										$form->AddElement(array("element"	=>"textarea",
 																"label"		=>_t("CONTENT"),
@@ -1074,7 +1074,7 @@ class blogModel {
 									<div class="ui-widget-header"><?php echo _t("EDIT"); ?></div>
 									<div class="body">
 									<?php
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 									?>
 									</div>
 								</div>
@@ -1092,7 +1092,7 @@ class blogModel {
 								<div class="ui-widget-header"><?php echo _t("EDIT"); ?></div>
 								<div class="body">
 								<?php
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 								?>
 								</div>
 							</div>
@@ -1111,7 +1111,7 @@ class blogModel {
 						<div class="ui-widget-header"><?php echo _t("EDIT"); ?></div>
 						<div class="body">
 						<?php
-						Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("POST")));
+						MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("POST")));
 						?>
 						</div>
 					</div>
@@ -1371,7 +1371,7 @@ class blogModel {
 											echo Diff::Process($otext,$ntext);
 										echo "</div>\n";
 									} else {
-										Error::Trigger("USERERROR",_t("SELECT_2_DIST_REV_COMP"));
+										MemErr::Trigger("USERERROR",_t("SELECT_2_DIST_REV_COMP"));
 									}
 								} else if ($rev!==false) {
 									?>
@@ -1387,7 +1387,7 @@ class blogModel {
 									echo "</div>\n";
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("POST")));
+								MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("POST")));
 							}
 							?>
                         </div>
@@ -1430,7 +1430,7 @@ class blogModel {
 			//Start buffering content
 			Utils::StartBuffering();
 			
-			Error::Trigger("USERERROR",_t("WRONG_DATA_X","APB_e001"));
+			MemErr::Trigger("USERERROR",_t("WRONG_DATA_X","APB_e001"));
 			
 			//Assign captured content to the template engine and clean buffer
 			Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,"url"=>"admin.php?cont="._PLUGIN,"content"=>Utils::GetBufferContent("clean")));
@@ -1457,7 +1457,7 @@ class blogModel {
 			//Start buffering content
 			Utils::StartBuffering();
 			
-			Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("REVISION")));
+			MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("REVISION")));
 			
 			//Assign captured content to the template engine and clean buffer
 			Template::AssignVar("sys_main",array("title"=>_PLUGIN_TITLE,"url"=>"admin.php?cont="._PLUGIN,"content"=>Utils::GetBufferContent("clean")));
@@ -1914,10 +1914,10 @@ class blogModel {
 												
 									Utils::Redirect("admin.php?cont="._PLUGIN."&op=categories");
 								} else {
-									Error::Trigger("USERERROR",implode("<br />",$errors));
+									MemErr::Trigger("USERERROR",implode("<br />",$errors));
 								}
 							} else {
-								Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+								MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 							}
 							
 							?>						
@@ -2048,14 +2048,14 @@ class blogModel {
 											
 											Utils::Redirect("admin.php?cont="._PLUGIN."&op=categories");
 										} else {
-											Error::Trigger("USERERROR",implode("<br />",$errors));
+											MemErr::Trigger("USERERROR",implode("<br />",$errors));
 										}
 									} else {
-										Error::Trigger("USERERROR",_t("INVALID_TOKEN"));
+										MemErr::Trigger("USERERROR",_t("INVALID_TOKEN"));
 									}
 								}
 						} else {
-							Error::Trigger("USERERROR",_t("X_NOT_FOUND",_t("CATEGORY")));
+							MemErr::Trigger("USERERROR",_t("X_NOT_FOUND",_t("CATEGORY")));
 						}
 						?>						
 											

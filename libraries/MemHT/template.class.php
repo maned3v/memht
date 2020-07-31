@@ -63,7 +63,7 @@ class Template {
 		try {
 			$tpl->display($config_sys['template']._DS.$file.".tpl");
 		} catch (Exception $e) {
-			Error::Trigger("WARNING","Template Exception",$e->getMessage());
+			MemErr::Trigger("WARNING","Template Exception",$e->getMessage());
 		}
 	}
 }
