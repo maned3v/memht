@@ -6,6 +6,8 @@ MemHT is an Open-source PHP CMS and Blog.
 
 You can create and manage your website with MemHT in few and easy steps, it's customizable, expandable and suitable for all your needs.
 
+![GPL-2.0](https://img.shields.io/github/license/maned3v/memht) ![Release date](https://img.shields.io/github/release-date/maned3v/memht) ![Last release](https://img.shields.io/github/v/release/maned3v/memht)
+
 #### GitHub repository links
 |Repository|Link|
 |----------|----|
@@ -20,13 +22,7 @@ You can create and manage your website with MemHT in few and easy steps, it's cu
     <td>Documents</td><td>http://docs.memht.com</td>
   </tr>
   <tr>
-    <td>Forums</td><td>http://forums.memht.com</td>
-  </tr>
-  <tr>
     <td>Downloads</td><td>http://downloads.memht.com</td>
-  </tr>
-  <tr>
-    <td>Demo</td><td>http://demo.memht.com</td>
   </tr>
 </table>
 
