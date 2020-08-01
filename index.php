@@ -59,7 +59,7 @@ $Ext->RunMext("Index");
 
 //DEBUG
 if ($User->IsAdmin() && $config_sys['debug']==1) {
-    Utils::Debug(Error::GetLog()); //TODO FIX: Get log from DB, should give errors of the session
+    Utils::Debug(MemErr::GetLog()); //TODO FIX: Get log from DB, should give errors of the session
     Utils::Debug($Db->GetQueries());
     Utils::Debug($_GET);
     Utils::Debug(Ram::GetAll());
