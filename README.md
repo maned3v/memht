@@ -21,9 +21,6 @@ You can create and manage your website with MemHT in few and easy steps, it's cu
   <tr>
     <td>Documents</td><td>http://docs.memht.com</td>
   </tr>
-  <tr>
-    <td>Downloads</td><td>http://downloads.memht.com</td>
-  </tr>
 </table>
 
 #### Release changes
