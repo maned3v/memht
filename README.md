@@ -16,13 +16,6 @@ You can create and manage your website with MemHT in few and easy steps, it's cu
 |MemHT Plugins|https://github.com/maned3v/memht-plugins|
 |MemHT Templates|https://github.com/maned3v/memht-templates|
 
-#### MemHT links
-<table>
-  <tr>
-    <td>Documents</td><td>http://docs.memht.com</td>
-  </tr>
-</table>
-
 #### Release changes
 See [CHANGES.md](https://github.com/maned3v/memht/blob/master/CHANGES.md)
 
